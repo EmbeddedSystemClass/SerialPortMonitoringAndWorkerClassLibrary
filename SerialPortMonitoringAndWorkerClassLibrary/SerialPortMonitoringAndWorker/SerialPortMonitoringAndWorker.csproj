@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Kalik</Authors>
+    <Company>Kalikompany</Company>
+    <Description>For now, library contains:
+    - Log to file instead console
+    - Monitoring class =&gt; in loop, checking messages received via SerialPort and sending to "Worker Class", which should get it.
+    - (Worker) Locking class =&gt; After got message "AUTHY: Permission Denied!", workstation is locking. Workstation isn't going to lock, when message is "AUTHY: Permission Granted!".</Description>
+    <NeutralLanguage>pl-PL</NeutralLanguage>
+    <Version>1.1.2</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Win32.SystemEvents" Version="4.5.0" />
+    <PackageReference Include="NLog" Version="4.6.7" />
+    <PackageReference Include="System.IO.Ports" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Drawing.Common">
+      <HintPath>..\..\..\..\..\..\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.0.0-preview4-27613-28\System.Drawing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <HintPath>..\..\..\..\..\..\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.0.0-preview4-27613-28\System.Windows.Forms.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
