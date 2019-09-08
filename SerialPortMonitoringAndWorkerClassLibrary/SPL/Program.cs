@@ -33,10 +33,16 @@ namespace SPL
             serialPortMonitoring = new SerialPortMonitoring(port);
 
             serialPortMonitoring.CreateWorkerSet(SPClass.LOCKING);
+            serialPortMonitoring.ExceptionOccurred += ExceptionOccurredInMonitoring;
             locker = (SerialPortLocking)serialPortMonitoring.SerialPortWorkers[SPClass.LOCKING];
             locker.ChangedState += Locker_ChangedState;;
 
             StartMonitoringThread();
+        }
+
+        private static void ExceptionOccurredInMonitoring(object sender, EventArgs e)
+        {
+            trayIconManagement.ChangeIcon(new Icon($"{trayIconManagement.ACHTUNG_ICON}"));
         }
 
         private static void OnClickInTrayMenu(object sender, MenuItems item)
@@ -91,8 +97,7 @@ namespace SPL
 
         private static void ExitApplication()
         {
-            Icon beginExitIcon = new Icon($"{TrayIconManagement.ICONS_LOCATION}/achtung.ico");
-            trayIconManagement.ChangeIcon(beginExitIcon);
+            trayIconManagement.ChangeIcon(new Icon($"{trayIconManagement.ACHTUNG_ICON}"));
 
             if (serialPortMonitoring != null)
                 StopMonitoring();

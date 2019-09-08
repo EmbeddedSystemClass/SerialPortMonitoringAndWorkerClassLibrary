@@ -21,6 +21,7 @@ namespace SPL
         public event TrayIconEventHandler OnClickElementInMenu;
 
         public const string ICONS_LOCATION = "./Icons";
+        public readonly string ACHTUNG_ICON = $"{ICONS_LOCATION}/achtung.ico";
         readonly string STARTUP_ICON = $"{ICONS_LOCATION}/startup.ico";
         readonly string START_ICON = $"{ICONS_LOCATION}/start.ico";
         readonly string PAUSE_ICON = $"{ICONS_LOCATION}/pause.ico";
