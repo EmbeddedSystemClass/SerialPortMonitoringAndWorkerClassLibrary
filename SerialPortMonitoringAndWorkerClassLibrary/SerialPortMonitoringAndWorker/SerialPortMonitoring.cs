@@ -9,6 +9,8 @@ namespace Kalikolandia
 {
     public class SerialPortMonitoring
     {
+        public event EventHandler ExceptionOccurred;
+
         private Dictionary<SPClass, SerialPortWorker> serialPortWorkers = new Dictionary<SPClass, SerialPortWorker>();
         /// <summary>
         /// Get copy (to prevent adding own workers) of dictionary with SerialPortWorkers
@@ -149,6 +151,7 @@ namespace Kalikolandia
             catch (Exception ex)
             {
                 Helper.NLogger.Error($"\n{ex.Message} \n{ex.InnerException}\n{ex.StackTrace}\n");
+                ExceptionOccurred?.Invoke(this, new EventArgs());
             }
         }
 
